@@ -1,0 +1,23 @@
+# Set the output file
+outfile="multiple_bars.pdf"
+set out outfile
+
+# Set the style to barchart with a nice thick line around the bars
+set style data histogram
+set style fill solid border -1
+
+# Key in topmargin
+set key font "Helvetica, 12" width 3 tmargin left
+
+# Axis labels
+set xlabel "Conformer number"
+set ylabel "Energy difference from conformer 1 / Ha" font "Helvetica, 14"
+
+# Plot each column as a grup of bars
+plot "multiple_bars.dat" u (($2+1127.203528899676)):xtic(1) title "NWChem" @barLine, '' u (($3+1125.6951083)):xtic(1) title "SODIT 20x20x20" @barLine,  '' u (($4+1126.1960228)):xtic(1) title "SODIT 50x50x50" @barLine,''  u (($5+1126.3106391)):xtic(1) title "SODIT 100x100x100" @barLine
+
+# Close the pdf
+unset out
+
+# Open up the PDF
+sys "evince ".outfile
