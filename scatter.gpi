@@ -2,6 +2,9 @@
 outfile="scatter.pdf"
 set out outfile
 
+# Set the title for each column
+titles='"Methane" "Neon" "Helium"'
+
 # Set the number of columns of data we want to plot
 numcols=3
 
@@ -11,8 +14,6 @@ set encoding iso_8859_1
 # Labels and tics
 set xlabel "Grid vacuum / {\305}" font "Helvetica, 20"
 set ylabel "% difference from converged energy"font "Helvetica, 17"
-
-titles='"Methane" "Neon" "Helium"'
 
 # Plot with multiple columns
 plot for [i=2:numcols+1]"scatter.dat" u 1:i title word(titles,i-1) w lp
